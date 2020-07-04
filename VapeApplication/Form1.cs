@@ -13,27 +13,43 @@ namespace VapeApplication
 {
     public partial class Form1 : Form
     {
+        AutorizPanel autorizPanel;
+        DBVape dbVape;
         public Form1()
         {
             InitializeComponent();
-            DBVape dBVape = new DBVape();
-            dBVape.openConnection();
+            dbVape = DBVape.getDBVape();
+            showAutorizPanel();
+           
+           // this.Controls.Add(CreateAutorizPanel());
+           
+           
 
-            DataTable tableCategory = new DataTable();
-
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `category`");
-            command.Connection = dBVape.GetConnection();
-
-            adapter.SelectCommand = command;
-            adapter.Fill(tableCategory);
-
-            dataGridView1.DataSource = tableCategory;
-
-
-            dBVape.closeConnection();
         }
 
+        private void showAutorizPanel()
+        {
+            autorizPanel = new AutorizPanel(new EventHandler(btnAutoriz_click));
+            autorizPanel.Location =
+            new Point(ClientSize.Width / 2 - autorizPanel.Size.Width / 2,
+                    ClientSize.Height / 2 - autorizPanel.Size.Height / 2);
+
+            this.Controls.Add(autorizPanel);
+        }
+
+        private void btnAutoriz_click(object sender, System.EventArgs e)
+        {
+            if(dbVape == null) {
+                MessageBox.Show("Ошибка работы с БД");
+                return; 
+            }
+            if(dbVape.getSaller(autorizPanel.Login, autorizPanel.Password) > 0)
+            MessageBox.Show("true");
+            else
+                MessageBox.Show("false");
+            //this.Controls.Remove(autorizPanel);
+        }
+
+        
     }
 }
