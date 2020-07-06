@@ -15,25 +15,19 @@ namespace VapeApplication
     {
         AutorizPanel autorizPanel;
         DBVape dbVape;
+        AddProductPanel addProductPanel;
         public Form1()
         {
             InitializeComponent();
             dbVape = DBVape.getDBVape();
             showAutorizPanel();
-           
-           // this.Controls.Add(CreateAutorizPanel());
-           
-           
-
         }
 
         private void showAutorizPanel()
         {
             autorizPanel = new AutorizPanel(new EventHandler(btnAutoriz_click));
-            autorizPanel.Location =
-            new Point(ClientSize.Width / 2 - autorizPanel.Size.Width / 2,
-                    ClientSize.Height / 2 - autorizPanel.Size.Height / 2);
-
+            autorizPanel.Location = new Point((this.ClientSize.Width - autorizPanel.Width) / 2 - 55, 
+                                    (this.ClientSize.Height - autorizPanel.Height) / 2 - 55);
             this.Controls.Add(autorizPanel);
         }
 
@@ -43,11 +37,14 @@ namespace VapeApplication
                 MessageBox.Show("Ошибка работы с БД");
                 return; 
             }
-            if(dbVape.getSaller(autorizPanel.Login, autorizPanel.Password) > 0)
-            MessageBox.Show("true");
+            if (dbVape.getSaller(autorizPanel.Login, autorizPanel.Password) > 0)
+            {
+                this.Controls.Remove(autorizPanel);
+                addProductPanel = new AddProductPanel();
+                this.Controls.Add(addProductPanel);
+            }
             else
-                MessageBox.Show("false");
-            //this.Controls.Remove(autorizPanel);
+                MessageBox.Show("Пользователь не найден");
         }
 
         
