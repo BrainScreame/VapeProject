@@ -32,18 +32,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.name = new System.Windows.Forms.TextBox();
+            this.nameTB = new System.Windows.Forms.TextBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.buttonAddImage = new System.Windows.Forms.Button();
-            this.description = new System.Windows.Forms.TextBox();
+            this.descriptionTB = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.buttonAddProduct = new System.Windows.Forms.Button();
-            this.quantity = new System.Windows.Forms.TextBox();
-            this.discount = new System.Windows.Forms.TextBox();
-            this.price = new System.Windows.Forms.TextBox();
-            this.CategityBox = new System.Windows.Forms.ComboBox();
+            this.quantityTB = new System.Windows.Forms.TextBox();
+            this.discountTB = new System.Windows.Forms.TextBox();
+            this.priceTB = new System.Windows.Forms.TextBox();
+            this.CategoryBox = new System.Windows.Forms.ComboBox();
+            this.addQuantityTB = new System.Windows.Forms.TextBox();
+            this.labelPlus = new System.Windows.Forms.Label();
+            this.deleteBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,16 +94,16 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Фото";
             // 
-            // name
+            // nameTB
             // 
-            this.name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.nameTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.name.Location = new System.Drawing.Point(18, 38);
-            this.name.MaximumSize = new System.Drawing.Size(450, 30);
-            this.name.MinimumSize = new System.Drawing.Size(150, 30);
-            this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(387, 30);
-            this.name.TabIndex = 4;
+            this.nameTB.Location = new System.Drawing.Point(18, 38);
+            this.nameTB.MaximumSize = new System.Drawing.Size(450, 30);
+            this.nameTB.MinimumSize = new System.Drawing.Size(150, 30);
+            this.nameTB.Name = "nameTB";
+            this.nameTB.Size = new System.Drawing.Size(448, 30);
+            this.nameTB.TabIndex = 4;
             // 
             // pictureBox
             // 
@@ -145,18 +148,18 @@
             this.buttonAddImage.UseVisualStyleBackColor = false;
             this.buttonAddImage.Click += new System.EventHandler(this.buttonAddImage_Click);
             // 
-            // description
+            // descriptionTB
             // 
-            this.description.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.descriptionTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.description.Location = new System.Drawing.Point(18, 579);
-            this.description.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.description.MaximumSize = new System.Drawing.Size(450, 150);
-            this.description.MinimumSize = new System.Drawing.Size(150, 30);
-            this.description.Multiline = true;
-            this.description.Name = "description";
-            this.description.Size = new System.Drawing.Size(387, 150);
-            this.description.TabIndex = 16;
+            this.descriptionTB.Location = new System.Drawing.Point(18, 579);
+            this.descriptionTB.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.descriptionTB.MaximumSize = new System.Drawing.Size(450, 150);
+            this.descriptionTB.MinimumSize = new System.Drawing.Size(150, 30);
+            this.descriptionTB.Multiline = true;
+            this.descriptionTB.Name = "descriptionTB";
+            this.descriptionTB.Size = new System.Drawing.Size(448, 150);
+            this.descriptionTB.TabIndex = 16;
             // 
             // label7
             // 
@@ -179,51 +182,78 @@
             this.buttonAddProduct.UseVisualStyleBackColor = true;
             this.buttonAddProduct.Click += new System.EventHandler(this.buttonAddProduct_Click);
             // 
-            // quantity
+            // quantityTB
             // 
-            this.quantity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.quantityTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.quantity.Location = new System.Drawing.Point(22, 331);
-            this.quantity.MaximumSize = new System.Drawing.Size(450, 30);
-            this.quantity.MinimumSize = new System.Drawing.Size(150, 30);
-            this.quantity.Name = "quantity";
-            this.quantity.Size = new System.Drawing.Size(387, 30);
-            this.quantity.TabIndex = 18;
+            this.quantityTB.Location = new System.Drawing.Point(18, 331);
+            this.quantityTB.MaximumSize = new System.Drawing.Size(450, 30);
+            this.quantityTB.MinimumSize = new System.Drawing.Size(150, 30);
+            this.quantityTB.Name = "quantityTB";
+            this.quantityTB.Size = new System.Drawing.Size(448, 30);
+            this.quantityTB.TabIndex = 18;
             // 
-            // discount
+            // discountTB
             // 
-            this.discount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.discountTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.discount.Location = new System.Drawing.Point(18, 258);
-            this.discount.MaximumSize = new System.Drawing.Size(450, 30);
-            this.discount.MinimumSize = new System.Drawing.Size(150, 30);
-            this.discount.Name = "discount";
-            this.discount.Size = new System.Drawing.Size(387, 30);
-            this.discount.TabIndex = 15;
+            this.discountTB.Location = new System.Drawing.Point(18, 258);
+            this.discountTB.MaximumSize = new System.Drawing.Size(450, 30);
+            this.discountTB.MinimumSize = new System.Drawing.Size(150, 30);
+            this.discountTB.Name = "discountTB";
+            this.discountTB.Size = new System.Drawing.Size(448, 30);
+            this.discountTB.TabIndex = 15;
             // 
-            // price
+            // priceTB
             // 
-            this.price.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.priceTB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.price.Location = new System.Drawing.Point(18, 184);
-            this.price.MaximumSize = new System.Drawing.Size(450, 30);
-            this.price.MinimumSize = new System.Drawing.Size(150, 30);
-            this.price.Name = "price";
-            this.price.Size = new System.Drawing.Size(387, 30);
-            this.price.TabIndex = 14;
+            this.priceTB.Location = new System.Drawing.Point(18, 184);
+            this.priceTB.MaximumSize = new System.Drawing.Size(450, 30);
+            this.priceTB.MinimumSize = new System.Drawing.Size(150, 30);
+            this.priceTB.Name = "priceTB";
+            this.priceTB.Size = new System.Drawing.Size(448, 30);
+            this.priceTB.TabIndex = 14;
             // 
-            // CategityBox
+            // CategoryBox
             // 
-            this.CategityBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.CategoryBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CategityBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CategityBox.FormattingEnabled = true;
-            this.CategityBox.Location = new System.Drawing.Point(22, 110);
-            this.CategityBox.MaximumSize = new System.Drawing.Size(450, 0);
-            this.CategityBox.MinimumSize = new System.Drawing.Size(150, 0);
-            this.CategityBox.Name = "CategityBox";
-            this.CategityBox.Size = new System.Drawing.Size(387, 33);
-            this.CategityBox.TabIndex = 20;
+            this.CategoryBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CategoryBox.FormattingEnabled = true;
+            this.CategoryBox.Location = new System.Drawing.Point(18, 109);
+            this.CategoryBox.MaximumSize = new System.Drawing.Size(450, 0);
+            this.CategoryBox.MinimumSize = new System.Drawing.Size(150, 0);
+            this.CategoryBox.Name = "CategoryBox";
+            this.CategoryBox.Size = new System.Drawing.Size(448, 33);
+            this.CategoryBox.TabIndex = 20;
+            // 
+            // addQuantityTB
+            // 
+            this.addQuantityTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addQuantityTB.Location = new System.Drawing.Point(502, 331);
+            this.addQuantityTB.Name = "addQuantityTB";
+            this.addQuantityTB.Size = new System.Drawing.Size(89, 30);
+            this.addQuantityTB.TabIndex = 21;
+            // 
+            // labelPlus
+            // 
+            this.labelPlus.AutoSize = true;
+            this.labelPlus.Location = new System.Drawing.Point(472, 334);
+            this.labelPlus.Name = "labelPlus";
+            this.labelPlus.Size = new System.Drawing.Size(24, 25);
+            this.labelPlus.TabIndex = 22;
+            this.labelPlus.Text = "+";
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Location = new System.Drawing.Point(221, 734);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(195, 53);
+            this.deleteBtn.TabIndex = 23;
+            this.deleteBtn.Text = "Удалить";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // AddProductPanel
             // 
@@ -233,18 +263,21 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.CategityBox);
+            this.Controls.Add(this.deleteBtn);
+            this.Controls.Add(this.labelPlus);
+            this.Controls.Add(this.addQuantityTB);
+            this.Controls.Add(this.CategoryBox);
             this.Controls.Add(this.buttonAddProduct);
-            this.Controls.Add(this.quantity);
+            this.Controls.Add(this.quantityTB);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.description);
-            this.Controls.Add(this.discount);
-            this.Controls.Add(this.price);
+            this.Controls.Add(this.descriptionTB);
+            this.Controls.Add(this.discountTB);
+            this.Controls.Add(this.priceTB);
             this.Controls.Add(this.buttonAddImage);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBox);
-            this.Controls.Add(this.name);
+            this.Controls.Add(this.nameTB);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -252,7 +285,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AddProductPanel";
-            this.Size = new System.Drawing.Size(548, 796);
+            this.Size = new System.Drawing.Size(805, 798);
             this.Load += new System.EventHandler(this.AddProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -266,17 +299,20 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.TextBox nameTB;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button buttonAddImage;
-        private System.Windows.Forms.TextBox description;
+        private System.Windows.Forms.TextBox descriptionTB;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button buttonAddProduct;
-        private System.Windows.Forms.TextBox quantity;
-        private System.Windows.Forms.TextBox discount;
-        private System.Windows.Forms.TextBox price;
-        private System.Windows.Forms.ComboBox CategityBox;
+        private System.Windows.Forms.TextBox quantityTB;
+        private System.Windows.Forms.TextBox discountTB;
+        private System.Windows.Forms.TextBox priceTB;
+        private System.Windows.Forms.ComboBox CategoryBox;
+        private System.Windows.Forms.TextBox addQuantityTB;
+        private System.Windows.Forms.Label labelPlus;
+        private System.Windows.Forms.Button deleteBtn;
     }
 }

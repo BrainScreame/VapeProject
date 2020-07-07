@@ -40,6 +40,12 @@ namespace VapeApplication
             if (dbVape.getSaller(autorizPanel.Login, autorizPanel.Password) > 0)
             {
                 this.Controls.Remove(autorizPanel);
+                autorizPanel.Dispose();
+
+                //Для проверки удаления, следи за id. Если будет не корректный то ничего не удалится
+                //Product product = new Product(7, "name", 2, 100, 100f, 0.5f, "desc", null);
+                //addProductPanel = new AddProductPanel(product);
+
                 addProductPanel = new AddProductPanel();
                 this.Controls.Add(addProductPanel);
             }

@@ -39,7 +39,6 @@
             this.Name = "Form1";
             this.Padding = new System.Windows.Forms.Padding(1);
             this.Text = "Form1";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }
