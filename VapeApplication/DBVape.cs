@@ -28,6 +28,74 @@ namespace VapeApplication
            connection = new MySqlConnection(connectionString);
         }
 
+        public bool addOrder()
+        {
+            bool result = false;
+            List <CartLine>  itemOrderList = Cart.getCart().Lines.ToList();
+
+            if (itemOrderList == null)
+                return result;
+            if (itemOrderList.Count == 0)
+                return result;
+
+            int sellerId = Seller.getSeller().Id;
+            String expression1 = "INSERT INTO `orders` (`id`, `date`, `sellerId`) VALUES (NULL, NOW(), @sellerId)";
+            String expression2 = "INSERT INTO `orderitems` (`orderId`, `productId`, `quantity`, `totalPrice`)" +
+                " VALUES (@orderId, @productId, @quantity, @totalPrice)";
+            MySqlTransaction transaction = connection.BeginTransaction(); ;
+
+            try
+            {
+                openConnection();
+                MySqlCommand command = new MySqlCommand(expression1, connection, transaction);
+                MySqlParameter sellerIdParameter = new MySqlParameter("@sellerId", sellerId);
+                command.Parameters.Add(sellerIdParameter);
+                command.ExecuteNonQuery();
+                long orderId = (int)command.LastInsertedId;
+
+
+                command.Parameters.Clear();
+
+                MySqlParameter orderIdParameter = new MySqlParameter("@orderId", orderId);
+                command.Parameters.Add(orderIdParameter);
+
+                MySqlParameter productIdParameter = new MySqlParameter()
+                {
+                    ParameterName = "@productId"
+                };
+
+                MySqlParameter quantityParameter = new MySqlParameter()
+                {
+                    ParameterName = "@quantity"
+                };
+                MySqlParameter totalPriceParameter = new MySqlParameter()
+                {
+                    ParameterName = "@totalPrice"
+                };
+                command.CommandText = expression2;
+
+                foreach (CartLine cartline in itemOrderList)
+                {
+                    productIdParameter.Value = cartline.Product.Id;
+                    quantityParameter.Value = cartline.Quantity;
+                    totalPriceParameter.Value = cartline.Product.Price * cartline.Quantity;
+                    command.ExecuteNonQuery();
+                }
+
+                transaction.Commit();
+                result = true;
+            }
+            catch (MySqlException e) {
+                transaction.Rollback();
+                MessageBox.Show(e.Message); }
+            finally
+            {
+                // закрываем подключение
+                closeConnection();
+            }
+            return result;
+        }
+
         // ищем продавца по логину и паролю
         public void getSaller(string login, string password)
         {
