@@ -69,7 +69,7 @@
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.ReadOnly = true;
             this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxDescription.Size = new System.Drawing.Size(689, 115);
+            this.textBoxDescription.Size = new System.Drawing.Size(548, 115);
             this.textBoxDescription.TabIndex = 3;
             this.textBoxDescription.Text = resources.GetString("textBoxDescription.Text");
             // 
@@ -96,7 +96,7 @@
             // buttonAddBasket
             // 
             this.buttonAddBasket.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonAddBasket.Location = new System.Drawing.Point(818, 179);
+            this.buttonAddBasket.Location = new System.Drawing.Point(668, 184);
             this.buttonAddBasket.Name = "buttonAddBasket";
             this.buttonAddBasket.Size = new System.Drawing.Size(125, 30);
             this.buttonAddBasket.TabIndex = 6;
@@ -106,7 +106,7 @@
             // 
             // textBoxCount
             // 
-            this.textBoxCount.Location = new System.Drawing.Point(773, 184);
+            this.textBoxCount.Location = new System.Drawing.Point(616, 189);
             this.textBoxCount.Multiline = true;
             this.textBoxCount.Name = "textBoxCount";
             this.textBoxCount.Size = new System.Drawing.Size(39, 22);
@@ -119,7 +119,7 @@
             // 
             this.buttonEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.buttonEdit.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonEdit.Location = new System.Drawing.Point(788, -4);
+            this.buttonEdit.Location = new System.Drawing.Point(638, 0);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(155, 37);
             this.buttonEdit.TabIndex = 8;
@@ -151,7 +151,7 @@
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.pictureBox);
             this.Name = "ListItem";
-            this.Size = new System.Drawing.Size(946, 223);
+            this.Size = new System.Drawing.Size(805, 223);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

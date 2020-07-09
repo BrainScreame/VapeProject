@@ -24,6 +24,7 @@ namespace VapeApplication
             InitializeComponent();
             dBVape = DBVape.getDBVape();
             createCategotyBox();
+      
 
             countProducts = dBVape.getCountProdycts(selectId);
             

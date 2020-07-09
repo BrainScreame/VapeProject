@@ -47,10 +47,12 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 48);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1036, 423);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(802, 690);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // button1
@@ -67,7 +69,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(3, 477);
+            this.button2.Location = new System.Drawing.Point(16, 744);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(182, 37);
             this.button2.TabIndex = 5;
@@ -78,7 +80,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(843, 477);
+            this.button3.Location = new System.Drawing.Point(585, 744);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(196, 37);
             this.button3.TabIndex = 6;
@@ -109,7 +111,7 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.textBox1);
             this.Name = "ListProducts";
-            this.Size = new System.Drawing.Size(1042, 568);
+            this.Size = new System.Drawing.Size(805, 798);
             this.ResumeLayout(false);
             this.PerformLayout();
 

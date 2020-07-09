@@ -14,23 +14,24 @@ namespace VapeApplication
     public partial class Form1 : Form
     {
         ListProducts listProducts;
-        AutorizPanel autorizPanel;
         DBVape dbVape;
-
         AddProductPanel addProductPanel;
+
 
         public Form1()
         {
             InitializeComponent();
             dbVape = DBVape.getDBVape();
 
+            menuStrip1.Visible = false;
             showAutorizPanel();
             
         }
 
         private void showAutorizPanel()
         {
-            autorizPanel = new AutorizPanel(new Action(btnAutoriz_click));
+            panel1.Visible = false;
+            AutorizPanel autorizPanel = new AutorizPanel(new Action(btnAutoriz_click));
             autorizPanel.Location = new Point((this.ClientSize.Width - autorizPanel.Width) / 2 - 55, 
                                    (this.ClientSize.Height - autorizPanel.Height) / 2 - 55);
             this.Controls.Add(autorizPanel);
@@ -38,27 +39,29 @@ namespace VapeApplication
 
         private void btnAutoriz_click()
         {
-
-            Seller sel = Seller.getSeller();
-
-            //Для проверки удаления, следи за id. Если будет не корректный то ничего не удалится
-            //Product product = new Product(7, "name", 2, 100, 100f, 0.5f, "desc", null);
-            //addProductPanel = new AddProductPanel(product, new Action(() => { MessageBox.Show("Работает"); }));
-
-            addProductPanel = new AddProductPanel();
-            addProductPanel.Top = 30;
-            this.Controls.Add(addProductPanel);
-
-        }
-        private void showListProducts()
-        {
+            menuStrip1.Visible = true;
+            panel1.Visible = true;
             listProducts = new ListProducts();
-            listProducts.Location =
-            new Point(0,
-                    30);
+            addProductPanel = new AddProductPanel();
+            panel1.Controls.Add(listProducts);
 
-            this.Controls.Add(listProducts);
         }
 
+        private void товырыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(listProducts);
+        }
+
+        private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(addProductPanel);
+        }
+
+        private void корзинаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
