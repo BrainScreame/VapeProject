@@ -47,7 +47,7 @@ namespace VapeApplication
             set { categoryId = value; }
         }
 
-        public int Quantitye
+        public int Quantity
         {
             get { return quantity; }
             set { quantity = value; }
@@ -67,7 +67,7 @@ namespace VapeApplication
 
         public String Description
         {
-            get { return name; }
+            get { return description; }
             set { description = value; }
         }
 

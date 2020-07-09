@@ -21,17 +21,14 @@ namespace VapeApplication
         {
             InitializeComponent();
             dbVape = DBVape.getDBVape();
-            //showAutorizPanel();
-            showListProducts();
+            showAutorizPanel();
         }
 
         private void showAutorizPanel()
         {
-            autorizPanel = new AutorizPanel(new EventHandler(btnAutoriz_click));
-            autorizPanel.Location =
-            new Point(ClientSize.Width / 2 - autorizPanel.Size.Width / 2,
-                    ClientSize.Height / 2 - autorizPanel.Size.Height / 2);
-
+            autorizPanel = new AutorizPanel(new Action(btnAutoriz_click));
+            autorizPanel.Location = new Point((this.ClientSize.Width - autorizPanel.Width) / 2 - 55, 
+                                   (this.ClientSize.Height - autorizPanel.Height) / 2 - 55);
             this.Controls.Add(autorizPanel);
         }
 
@@ -44,28 +41,20 @@ namespace VapeApplication
 
             this.Controls.Add(listProducts);
         }
-
-        private void btnAutoriz_click(object sender, System.EventArgs e)
+      
+        private void btnAutoriz_click()
         {
-            if (dbVape == null)
-            {
-                MessageBox.Show("Ошибка работы с БД");
-                return;
-            }
-            if (dbVape.getSaller(autorizPanel.Login, autorizPanel.Password) > 0)
-            {
-                this.Controls.Remove(autorizPanel);
-                showListProducts();
-            }
-            else
-                MessageBox.Show("false");
-            //this.Controls.Remove(autorizPanel);
-        }
+                this.Controls.RemoveAt(0);
+                autorizPanel.Dispose();
 
+                Seller sel = Seller.getSeller();
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+                //Для проверки удаления, следи за id. Если будет не корректный то ничего не удалится
+                //Product product = new Product(7, "name", 2, 100, 100f, 0.5f, "desc", null);
+                //addProductPanel = new AddProductPanel(product, new Action(() => { MessageBox.Show("Работает"); }));
 
+                addProductPanel = new AddProductPanel();
+                this.Controls.Add(addProductPanel);
         }
     }
 }
