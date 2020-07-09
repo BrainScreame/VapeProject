@@ -22,20 +22,10 @@ namespace VapeApplication
         public ListProducts()
         {
             InitializeComponent();
+            Dock = DockStyle.Fill;
             dBVape = DBVape.getDBVape();
             createCategotyBox();
-      
-
-            countProducts = dBVape.getCountProdycts(selectId);
-            
-            products = dBVape.getProdycts(selectId, startPos, count);
-            populateItems();
-
-            button2.Visible = false;
-            if(countProducts <= count)
-            {
-                button3.Visible = false;
-            }
+     
         }
 
         private void populateItems()
@@ -130,7 +120,6 @@ namespace VapeApplication
             else
             {
                 button3.Visible = true;
-
             }
         }
 

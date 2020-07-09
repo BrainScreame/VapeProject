@@ -62,6 +62,8 @@
             // 
             // textBoxDescription
             // 
+            this.textBoxDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxDescription.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBoxDescription.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxDescription.Location = new System.Drawing.Point(254, 39);
@@ -69,7 +71,7 @@
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.ReadOnly = true;
             this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxDescription.Size = new System.Drawing.Size(548, 115);
+            this.textBoxDescription.Size = new System.Drawing.Size(700, 115);
             this.textBoxDescription.TabIndex = 3;
             this.textBoxDescription.Text = resources.GetString("textBoxDescription.Text");
             // 
@@ -96,7 +98,7 @@
             // buttonAddBasket
             // 
             this.buttonAddBasket.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonAddBasket.Location = new System.Drawing.Point(668, 184);
+            this.buttonAddBasket.Location = new System.Drawing.Point(820, 184);
             this.buttonAddBasket.Name = "buttonAddBasket";
             this.buttonAddBasket.Size = new System.Drawing.Size(125, 30);
             this.buttonAddBasket.TabIndex = 6;
@@ -106,7 +108,7 @@
             // 
             // textBoxCount
             // 
-            this.textBoxCount.Location = new System.Drawing.Point(616, 189);
+            this.textBoxCount.Location = new System.Drawing.Point(775, 189);
             this.textBoxCount.Multiline = true;
             this.textBoxCount.Name = "textBoxCount";
             this.textBoxCount.Size = new System.Drawing.Size(39, 22);
@@ -119,9 +121,9 @@
             // 
             this.buttonEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.buttonEdit.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonEdit.Location = new System.Drawing.Point(638, 0);
+            this.buttonEdit.Location = new System.Drawing.Point(775, 3);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(155, 37);
+            this.buttonEdit.Size = new System.Drawing.Size(179, 37);
             this.buttonEdit.TabIndex = 8;
             this.buttonEdit.Text = "Редактировать";
             this.buttonEdit.UseVisualStyleBackColor = false;
@@ -141,6 +143,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Controls.Add(this.labelNewPrice);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.textBoxCount);
@@ -150,8 +153,9 @@
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.pictureBox);
+            this.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
             this.Name = "ListItem";
-            this.Size = new System.Drawing.Size(805, 223);
+            this.Size = new System.Drawing.Size(957, 223);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
