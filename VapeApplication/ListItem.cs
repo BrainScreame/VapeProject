@@ -113,7 +113,8 @@ namespace VapeApplication
 
         private void buttonAddBasket_Click(object sender, EventArgs e)
         {
-
+            Cart cart = Cart.getCart();
+            cart.AddItem(product, Convert.ToInt32(textBoxCount.Text.ToString()));
         }
     }
 }

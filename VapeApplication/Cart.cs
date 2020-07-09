@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
 
 namespace VapeApplication
 {
@@ -34,11 +36,25 @@ namespace VapeApplication
 
             if (line == null)
             {
-                lineCollection.Add(new CartLine { Product = product, Quantity = quantity });
+                if (product.Quantity >= quantity)
+                {
+                    lineCollection.Add(new CartLine { Product = product, Quantity = quantity });
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("Такого количества нет в наличии");
+                }
             }
             else
             {
-                line.Quantity += quantity;
+                if (product.Quantity >= quantity + line.Quantity)
+                {
+                    line.Quantity += quantity;
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("Такого количества нет в наличии");
+                }
             }
         }
 
