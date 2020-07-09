@@ -13,18 +13,16 @@ namespace VapeApplication
 {
     public partial class Form1 : Form
     {
+        ListProducts listProducts;
         AutorizPanel autorizPanel;
         DBVape dbVape;
+
         public Form1()
         {
             InitializeComponent();
             dbVape = DBVape.getDBVape();
-            showAutorizPanel();
-           
-           // this.Controls.Add(CreateAutorizPanel());
-           
-           
-
+            //showAutorizPanel();
+            showListProducts();
         }
 
         private void showAutorizPanel()
@@ -37,19 +35,37 @@ namespace VapeApplication
             this.Controls.Add(autorizPanel);
         }
 
+        private void showListProducts()
+        {
+            listProducts = new ListProducts();
+            listProducts.Location =
+            new Point(0,
+                    30);
+
+            this.Controls.Add(listProducts);
+        }
+
         private void btnAutoriz_click(object sender, System.EventArgs e)
         {
-            if(dbVape == null) {
+            if (dbVape == null)
+            {
                 MessageBox.Show("Ошибка работы с БД");
-                return; 
+                return;
             }
-            if(dbVape.getSaller(autorizPanel.Login, autorizPanel.Password) > 0)
-            MessageBox.Show("true");
+            if (dbVape.getSaller(autorizPanel.Login, autorizPanel.Password) > 0)
+            {
+                this.Controls.Remove(autorizPanel);
+                showListProducts();
+            }
             else
                 MessageBox.Show("false");
             //this.Controls.Remove(autorizPanel);
         }
 
-        
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
