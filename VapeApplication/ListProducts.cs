@@ -32,7 +32,20 @@ namespace VapeApplication
         // Обновление списка с текущими пареметрами
         public void update()
         {
-
+            startPos = 0;
+            countProducts = dBVape.getCountProdycts(selectId);
+            products = dBVape.getProdycts(selectId, startPos, count);
+            flowLayoutPanel1.Controls.Clear();
+            populateItems();
+            button2.Visible = false;
+            if (countProducts <= count)
+            {
+                button3.Visible = false;
+            }
+            else
+            {
+                button3.Visible = true;
+            }
         }
         //
 

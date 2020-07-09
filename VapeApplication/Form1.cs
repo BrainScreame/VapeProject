@@ -50,6 +50,7 @@ namespace VapeApplication
         private void товырыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
+            listProducts.update();
             panel1.Controls.Add(listProducts);
         }
 
