@@ -40,45 +40,70 @@ namespace VapeApplication
 
             int sellerId = Seller.getSeller().Id;
             String expression1 = "INSERT INTO `orders` (`id`, `date`, `sellerId`) VALUES (NULL, NOW(), @sellerId)";
-            String expression2 = "INSERT INTO `orderitems` (`orderId`, `productId`, `quantity`, `totalPrice`)" +
-                " VALUES (@orderId, @productId, @quantity, @totalPrice)";
-            MySqlTransaction transaction = connection.BeginTransaction(); ;
+            String insertOrderItemExpression = "INSERT INTO `orderitems` (`id`, `orderId`, `productId`, `quantity`, `totalPrice`)" +
+                " VALUES (NULL, @orderId, @productId, @quantity, @totalPrice)";
 
+            String updateProductExpression = "UPDATE `products` SET `quantity` =`quantity` - @quantity WHERE `id` = @idProduct ";
+
+            openConnection();
+            MySqlTransaction transaction = connection.BeginTransaction(); ;
             try
             {
-                openConnection();
                 MySqlCommand command = new MySqlCommand(expression1, connection, transaction);
                 MySqlParameter sellerIdParameter = new MySqlParameter("@sellerId", sellerId);
                 command.Parameters.Add(sellerIdParameter);
                 command.ExecuteNonQuery();
-                long orderId = (int)command.LastInsertedId;
+                int orderId = (int)command.LastInsertedId;
 
-
-                command.Parameters.Clear();
-
-                MySqlParameter orderIdParameter = new MySqlParameter("@orderId", orderId);
-                command.Parameters.Add(orderIdParameter);
-
-                MySqlParameter productIdParameter = new MySqlParameter()
-                {
-                    ParameterName = "@productId"
-                };
-
-                MySqlParameter quantityParameter = new MySqlParameter()
-                {
-                    ParameterName = "@quantity"
-                };
-                MySqlParameter totalPriceParameter = new MySqlParameter()
-                {
-                    ParameterName = "@totalPrice"
-                };
-                command.CommandText = expression2;
-
+                
                 foreach (CartLine cartline in itemOrderList)
                 {
-                    productIdParameter.Value = cartline.Product.Id;
-                    quantityParameter.Value = cartline.Quantity;
-                    totalPriceParameter.Value = cartline.Product.Price * cartline.Quantity;
+                    command.CommandText = insertOrderItemExpression;
+                    command.Parameters.Clear();
+                    MySqlParameter orderIdParameter = new MySqlParameter("@orderId", orderId);
+                    //command.Parameters.Add(orderIdParameter);
+                    //MessageBox.Show(orderIdParameter.Value.ToString());
+
+                    MySqlParameter productIdParameter = new MySqlParameter()
+                    {
+                        ParameterName = "@productId",
+                        Value = cartline.Product.Id
+
+                    };
+
+                    MySqlParameter quantityParameter = new MySqlParameter()
+                    {
+                        ParameterName = "@quantity",
+                        Value = cartline.Quantity
+                    };
+                    MySqlParameter totalPriceParameter = new MySqlParameter()
+                    {
+                        ParameterName = "@totalPrice",
+                        Value = Math.Round(cartline.Product.Price * cartline.Quantity * cartline.Product.Discount, 2)
+                    };
+                    command.Parameters.Add(orderIdParameter);
+                    command.Parameters.Add(productIdParameter);
+                    command.Parameters.Add(quantityParameter);
+                    command.Parameters.Add(totalPriceParameter);
+                    command.ExecuteNonQuery();
+
+                    command.Parameters.Clear();
+                    command.CommandText = updateProductExpression;
+
+                    MySqlParameter productIdUpdateParameter = new MySqlParameter()
+                    {
+                        ParameterName = "@idProduct",
+                        Value = cartline.Product.Id
+                    };
+                    MySqlParameter quantityUpdateParameter = new MySqlParameter()
+                    {
+                        ParameterName = "@quantity",
+                        Value = cartline.Quantity
+                    };
+
+                    command.Parameters.Add(productIdUpdateParameter);
+                    command.Parameters.Add(quantityUpdateParameter);
+
                     command.ExecuteNonQuery();
                 }
 

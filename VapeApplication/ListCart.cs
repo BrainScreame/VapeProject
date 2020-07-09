@@ -33,7 +33,7 @@ namespace VapeApplication
                 listItems[i].CountCart = cart.Lines[i].Quantity;
                 flowLayoutPanel1.Controls.Add(listItems[i]);
             }
-            labelSum.Text = "Общая стоимось " + cart.ComputeTotalValue().ToString();
+            labelSum.Text = "Общая стоимось " + Math.Round(cart.ComputeTotalValue(), 2).ToString();
         }
 
         private void showListProductAndUpdateList()
@@ -45,8 +45,27 @@ namespace VapeApplication
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
+            clearAll();
+        }
+
+        private void clearAll()
+        {
             cart.Lines.Clear();
+            labelSum.Text = "Общая стоимось 0";
             flowLayoutPanel1.Controls.Clear();
+        }
+
+        private void buttonPay_Click(object sender, EventArgs e)
+        {
+            if (DBVape.getDBVape().addOrder())
+            {
+                MessageBox.Show("Заказ оформлен");
+                clearAll();
+            }
+            else
+            {
+                MessageBox.Show("Произошла ошибка");
+            }
         }
     }
 }

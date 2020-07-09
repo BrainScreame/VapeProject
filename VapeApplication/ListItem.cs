@@ -70,7 +70,7 @@ namespace VapeApplication
                     labelPrice.Text = "ЦЕНА " + product.Price;
                     labelPrice.Font = new Font(labelPrice.Font, FontStyle.Strikeout);
 
-                    labelNewPrice.Text = "Новая цена " + Math.Round(product.Price - product.Price * product.Discount * 0.01, 2).ToString();
+                    labelNewPrice.Text = "Новая цена " + Math.Round(product.Price * product.Discount, 2).ToString();
 
                 }
                 labelQantity.Text = "В наличии " + product.Quantity.ToString();

@@ -60,6 +60,7 @@
             this.buttonPay.TabIndex = 2;
             this.buttonPay.Text = "Оплатить";
             this.buttonPay.UseVisualStyleBackColor = true;
+            this.buttonPay.Click += new System.EventHandler(this.buttonPay_Click);
             // 
             // buttonClear
             // 
