@@ -89,7 +89,9 @@ namespace VapeApplication
             dbVape.getSaller(Login, Password);
             if (Seller.getSeller() != null)
             {
+                this.Parent.Controls.Remove(this);
                 method();
+                
             }
             else
                 MessageBox.Show("Пользователь не найден");

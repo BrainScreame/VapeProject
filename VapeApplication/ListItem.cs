@@ -41,7 +41,7 @@ namespace VapeApplication
                     labelNewPrice.Text = "Новая цена " + (product.Price - product.Price * product.Discount * 0.01).ToString();
 
                 }
-                labelQantity.Text = "В наличии " + product.Quantitye.ToString();
+                labelQantity.Text = "В наличии " + product.Quantity.ToString();
 
             }
         }
