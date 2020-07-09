@@ -12,9 +12,13 @@ namespace VapeApplication
 {
     public partial class ListItem : UserControl
     {
-
-        public ListItem()
+        Panel control;
+        Action method;
+        public ListItem(Panel control, Action method)
         {
+            this.control = control;
+            this.method = method;
+            //textBoxDescription.ReadOnly = true;
             InitializeComponent();
         }
 
@@ -102,7 +106,9 @@ namespace VapeApplication
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            AddProductPanel addProductPanel = new AddProductPanel(product, null);
+            AddProductPanel addProductPanel = new AddProductPanel(product, method);
+            control.Controls.Clear();
+            control.Controls.Add(addProductPanel);
         }
 
         private void buttonAddBasket_Click(object sender, EventArgs e)

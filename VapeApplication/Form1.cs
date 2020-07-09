@@ -41,7 +41,7 @@ namespace VapeApplication
         {
             menuStrip1.Visible = true;
             panel1.Visible = true;
-            listProducts = new ListProducts();
+            listProducts = new ListProducts(panel1);
             addProductPanel = new AddProductPanel();
             panel1.Controls.Add(listProducts);
 

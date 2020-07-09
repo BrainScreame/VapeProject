@@ -19,13 +19,22 @@ namespace VapeApplication
         int count = 5;
         int countProducts = 0;
 
-        public ListProducts()
+        Panel panel;
+        public ListProducts(Panel panel)
         {
             InitializeComponent();
+            this.panel = panel;
             Dock = DockStyle.Fill;
             dBVape = DBVape.getDBVape();
             createCategotyBox();
         }
+
+        // Обновление списка с текущими пареметрами
+        public void update()
+        {
+
+        }
+        //
 
         private void populateItems()
         {
@@ -33,10 +42,18 @@ namespace VapeApplication
 
             for (int i = 0; i < products.Count; i++)
             {
-                listItems.Add(new ListItem());
+                listItems.Add(new ListItem(panel, showListProductAndUpdateList));
                 listItems[i].Product = products[i];
                 flowLayoutPanel1.Controls.Add(listItems[i]);
             }
+        }
+
+        private void showListProductAndUpdateList()
+        {
+            products = dBVape.getProdycts(selectId, startPos, count);
+            flowLayoutPanel1.Controls.Clear();
+            populateItems();
+            panel.Controls.Add(this);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -94,6 +111,11 @@ namespace VapeApplication
             CategoryBox.ValueMember = "id";
             // по дефолту выбираем первый элемент
             CategoryBox.SelectedIndex = 0;
+            selectId = (int)CategoryBox.SelectedValue;
+
+            products = dBVape.getProdycts(selectId, startPos, count);
+            flowLayoutPanel1.Controls.Clear();
+            populateItems();
         }
 
         private void CategoryBox_SelectedIndexChanged(object sender, EventArgs e)

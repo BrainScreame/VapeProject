@@ -66,6 +66,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxDescription.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBoxDescription.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxDescription.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.textBoxDescription.Location = new System.Drawing.Point(254, 39);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
