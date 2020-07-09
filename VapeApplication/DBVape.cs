@@ -111,7 +111,36 @@ namespace VapeApplication
 
             return prodyctList;
         }
-        
+
+        public int getCountProdycts(int categoryId)
+        {
+            String expression = "SELECT COUNT(*) FROM `products` WHERE @categoryId = CATEGORYID";
+            int count = 0;
+            try
+            {
+                openConnection();
+                MySqlCommand command = new MySqlCommand(expression, connection);
+                MySqlParameter categoryParam = new MySqlParameter("@categoryId", categoryId);
+                command.Parameters.Add(categoryParam);
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows) // если есть данные
+                {
+                    while (reader.Read()) // построчно считываем данные
+                    {
+                        count = reader.GetInt32(0);
+                    }
+                }
+            }
+            catch (MySqlException e) { MessageBox.Show(e.Message); }
+            finally
+            {
+                // закрываем подключение
+                closeConnection();
+            }
+
+            return count;
+        }
+
         public List<Product> getProdycts(int categoryId, string search)
         {
             List<Product> prodyctList = new List<Product>();
@@ -145,7 +174,38 @@ namespace VapeApplication
             }
 
             return prodyctList;
-        } 
+        }
+
+        public int getCountProdycts(int categoryId, string search)
+        {
+            String expression = "SELECT COUNT(*) FROM `products` WHERE @categoryId = CATEGORYID AND name LIKE @search";
+            int count = 0;
+            try
+            {
+                openConnection();
+                MySqlCommand command = new MySqlCommand(expression, connection);
+                MySqlParameter categoryParam = new MySqlParameter("@categoryId", categoryId);
+                MySqlParameter searchParam = new MySqlParameter("@search", search);
+                command.Parameters.Add(categoryParam);
+                command.Parameters.Add(searchParam);
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows) // если есть данные
+                {
+                    while (reader.Read()) // построчно считываем данные
+                    {
+                        count = reader.GetInt32(0);
+                    }
+                }
+            }
+            catch (MySqlException e) { MessageBox.Show(e.Message); }
+            finally
+            {
+                // закрываем подключение
+                closeConnection();
+            }
+
+            return count;
+        }
 
         public void openConnection()
         {

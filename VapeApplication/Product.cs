@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VapeApplication
 {
-    class Product
+    public class Product
     {
         private int id;
         private String name;

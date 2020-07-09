@@ -38,6 +38,7 @@
             // 
             // textBox1
             // 
+            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.Location = new System.Drawing.Point(338, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -54,6 +55,7 @@
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(657, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 35);
@@ -64,6 +66,7 @@
             // 
             // button2
             // 
+            this.button2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.Location = new System.Drawing.Point(3, 477);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(182, 37);
@@ -74,6 +77,7 @@
             // 
             // button3
             // 
+            this.button3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.Location = new System.Drawing.Point(843, 477);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(196, 37);
@@ -85,10 +89,11 @@
             // CategoryBox
             // 
             this.CategoryBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CategoryBox.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CategoryBox.FormattingEnabled = true;
             this.CategoryBox.Location = new System.Drawing.Point(40, 13);
             this.CategoryBox.Name = "CategoryBox";
-            this.CategoryBox.Size = new System.Drawing.Size(195, 24);
+            this.CategoryBox.Size = new System.Drawing.Size(195, 27);
             this.CategoryBox.TabIndex = 7;
             this.CategoryBox.TabStop = false;
             this.CategoryBox.SelectedIndexChanged += new System.EventHandler(this.CategoryBox_SelectedIndexChanged);

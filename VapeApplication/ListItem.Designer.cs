@@ -37,6 +37,7 @@
             this.buttonAddBasket = new System.Windows.Forms.Button();
             this.textBoxCount = new System.Windows.Forms.TextBox();
             this.buttonEdit = new System.Windows.Forms.Button();
+            this.labelNewPrice = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +45,7 @@
             // 
             this.pictureBox.Location = new System.Drawing.Point(4, 4);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(220, 194);
+            this.pictureBox.Size = new System.Drawing.Size(220, 216);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
@@ -66,8 +67,9 @@
             this.textBoxDescription.Location = new System.Drawing.Point(254, 39);
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.ReadOnly = true;
             this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxDescription.Size = new System.Drawing.Size(689, 96);
+            this.textBoxDescription.Size = new System.Drawing.Size(689, 115);
             this.textBoxDescription.TabIndex = 3;
             this.textBoxDescription.Text = resources.GetString("textBoxDescription.Text");
             // 
@@ -75,7 +77,7 @@
             // 
             this.labelPrice.AutoSize = true;
             this.labelPrice.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelPrice.Location = new System.Drawing.Point(250, 148);
+            this.labelPrice.Location = new System.Drawing.Point(250, 190);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(58, 19);
             this.labelPrice.TabIndex = 4;
@@ -85,7 +87,7 @@
             // 
             this.labelQantity.AutoSize = true;
             this.labelQantity.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelQantity.Location = new System.Drawing.Point(250, 172);
+            this.labelQantity.Location = new System.Drawing.Point(250, 157);
             this.labelQantity.Name = "labelQantity";
             this.labelQantity.Size = new System.Drawing.Size(85, 19);
             this.labelQantity.TabIndex = 5;
@@ -93,35 +95,52 @@
             // 
             // buttonAddBasket
             // 
-            this.buttonAddBasket.Location = new System.Drawing.Point(827, 158);
+            this.buttonAddBasket.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonAddBasket.Location = new System.Drawing.Point(818, 179);
             this.buttonAddBasket.Name = "buttonAddBasket";
-            this.buttonAddBasket.Size = new System.Drawing.Size(116, 29);
+            this.buttonAddBasket.Size = new System.Drawing.Size(125, 30);
             this.buttonAddBasket.TabIndex = 6;
             this.buttonAddBasket.Text = "В корзину";
             this.buttonAddBasket.UseVisualStyleBackColor = true;
             // 
             // textBoxCount
             // 
-            this.textBoxCount.Location = new System.Drawing.Point(758, 161);
+            this.textBoxCount.Location = new System.Drawing.Point(773, 184);
             this.textBoxCount.Multiline = true;
             this.textBoxCount.Name = "textBoxCount";
             this.textBoxCount.Size = new System.Drawing.Size(39, 22);
             this.textBoxCount.TabIndex = 7;
+            this.textBoxCount.Text = "1";
+            this.textBoxCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCount_KeyPress);
             // 
             // buttonEdit
             // 
             this.buttonEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.buttonEdit.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonEdit.Location = new System.Drawing.Point(788, -4);
             this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(155, 31);
+            this.buttonEdit.Size = new System.Drawing.Size(155, 37);
             this.buttonEdit.TabIndex = 8;
             this.buttonEdit.Text = "Редактировать";
             this.buttonEdit.UseVisualStyleBackColor = false;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // labelNewPrice
+            // 
+            this.labelNewPrice.AutoSize = true;
+            this.labelNewPrice.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelNewPrice.Location = new System.Drawing.Point(425, 190);
+            this.labelNewPrice.Name = "labelNewPrice";
+            this.labelNewPrice.Size = new System.Drawing.Size(88, 19);
+            this.labelNewPrice.TabIndex = 9;
+            this.labelNewPrice.Text = "Новая цена";
             // 
             // ListItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelNewPrice);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.textBoxCount);
             this.Controls.Add(this.buttonAddBasket);
@@ -131,7 +150,7 @@
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.pictureBox);
             this.Name = "ListItem";
-            this.Size = new System.Drawing.Size(946, 201);
+            this.Size = new System.Drawing.Size(946, 223);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -148,5 +167,6 @@
         private System.Windows.Forms.Button buttonAddBasket;
         private System.Windows.Forms.TextBox textBoxCount;
         private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.Label labelNewPrice;
     }
 }

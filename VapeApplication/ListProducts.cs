@@ -14,9 +14,10 @@ namespace VapeApplication
     {
         DBVape dBVape;
         List<Product> products;
-        int selectId = 1;
+        int selectId = 0;
         int startPos = 0;
-        int count = 2;
+        int count = 5;
+        int countProducts = 0;
 
         public ListProducts()
         {
@@ -24,14 +25,16 @@ namespace VapeApplication
             dBVape = DBVape.getDBVape();
             createCategotyBox();
 
+            countProducts = dBVape.getCountProdycts(selectId);
+            
             products = dBVape.getProdycts(selectId, startPos, count);
+            populateItems();
+
             button2.Visible = false;
-            if(buttonVisible())
+            if(countProducts <= count)
             {
                 button3.Visible = false;
             }
-
-            populateItems();
         }
 
         private void populateItems()
@@ -41,53 +44,54 @@ namespace VapeApplication
             for (int i = 0; i < products.Count; i++)
             {
                 listItems.Add(new ListItem());
-                listItems[i].Image = products[i].Image;
-                listItems[i].Name = products[i].Name;
-                listItems[i].Description = products[i].Description;
-                listItems[i].Price = products[i].Price;
-                listItems[i].Qantity = products[i].Quantitye;
+                listItems[i].Product = products[i];
                 flowLayoutPanel1.Controls.Add(listItems[i]);
             }
         }
 
-
-        private bool buttonVisible()
-        {
-            return products.Count < count;
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            button2.Visible = true;
-            flowLayoutPanel1.Controls.Clear();
             startPos += count;
             products = dBVape.getProdycts(selectId, startPos, count);
+            flowLayoutPanel1.Controls.Clear();
             populateItems();
-            if (buttonVisible())
+            if(startPos + count >= countProducts)
             {
                 button3.Visible = false;
             }
-
+            button2.Visible = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            button3.Visible = true;
-            flowLayoutPanel1.Controls.Clear();
             startPos -= count;
             products = dBVape.getProdycts(selectId, startPos, count);
+            flowLayoutPanel1.Controls.Clear();
             populateItems();
-            if(startPos == 0)
+            if (startPos == 0)
             {
                 button2.Visible = false;
             }
+            button3.Visible = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            startPos = 0;
+            countProducts = dBVape.getCountProdycts(selectId, "%" + textBox1.Text.ToString() + "%");
             products = dBVape.getProdycts(selectId, "%"+textBox1.Text.ToString()+"%");
             flowLayoutPanel1.Controls.Clear();
             populateItems();
+            button2.Visible = false;
+            if (countProducts <= count)
+            {
+                button3.Visible = false;
+            }
+            else
+            {
+                button3.Visible = true;
+
+            }
         }
 
         private void createCategotyBox()
@@ -95,28 +99,39 @@ namespace VapeApplication
             // Получаем список категорий и указываем CategoryBox на источник данных
             CategoryBox.DataSource = dBVape.getCategory();
             // указываем что выводить в CategoryBox нужно название категории (name)
-            CategoryBox.DisplayMember = "Name";
+            CategoryBox.DisplayMember = "name";
             // указываем что принимать за значение в CategoryBox нужно поле id
-            CategoryBox.ValueMember = "Id";
+            CategoryBox.ValueMember = "id";
             // по дефолту выбираем первый элемент
-            //CategoryBox.SelectedIndex = 0;
+            CategoryBox.SelectedIndex = 0;
         }
 
         private void CategoryBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            //selectId = int.Parse(CategoryBox.SelectedValue.ToString());
+            try
+            {
+                selectId = (int)CategoryBox.SelectedValue;
+            }
+            catch
+            {
+                selectId = 0;
+            }
+            startPos = 0;
+            countProducts = dBVape.getCountProdycts(selectId);
             products = dBVape.getProdycts(selectId, startPos, count);
             flowLayoutPanel1.Controls.Clear();
             populateItems();
-            if (buttonVisible())
+            button2.Visible = false;
+            if (countProducts <= count)
             {
                 button3.Visible = false;
             }
             else
             {
                 button3.Visible = true;
+
             }
         }
+
     }
 }

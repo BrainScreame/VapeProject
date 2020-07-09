@@ -17,6 +17,36 @@ namespace VapeApplication
             InitializeComponent();
         }
 
+
+        private Product product;
+
+        public Product Product
+        {
+            get { return product; }
+            set
+            {
+                product = value;
+                pictureBox.Image = product.Image;
+                labelName.Text = product.Name;
+                textBoxDescription.Text = product.Description;
+                if(product.Discount == 0)
+                {
+                    labelNewPrice.Visible = false;
+                    labelPrice.Text = "ЦЕНА " + product.Price;
+                } else
+                {
+                    labelPrice.Text = "ЦЕНА " + product.Price;
+                    labelPrice.Font = new Font(labelPrice.Font, FontStyle.Strikeout);
+
+                    labelNewPrice.Text = "Новая цена " + (product.Price - product.Price * product.Discount * 0.01).ToString();
+
+                }
+                labelQantity.Text = "В наличии " + product.Quantitye.ToString();
+
+            }
+        }
+
+        /*
         #region Propperties
 
         private String name;
@@ -59,7 +89,19 @@ namespace VapeApplication
             get { return image; }
             set { image = value; pictureBox.Image = value; }
         }
-        
+
         #endregion
+        */
+
+        private void textBoxCount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57))
+                e.Handled = true;
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
