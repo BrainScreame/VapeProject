@@ -13,13 +13,17 @@ namespace VapeApplication
 {
     public partial class Form1 : Form
     {
+        ListProducts listProducts;
         AutorizPanel autorizPanel;
         DBVape dbVape;
+
         AddProductPanel addProductPanel;
+
         public Form1()
         {
             InitializeComponent();
             dbVape = DBVape.getDBVape();
+
             showAutorizPanel();
             
         }
@@ -31,6 +35,7 @@ namespace VapeApplication
                                    (this.ClientSize.Height - autorizPanel.Height) / 2 - 55);
             this.Controls.Add(autorizPanel);
         }
+
 
         private void btnAutoriz_click()
         {
@@ -45,6 +50,18 @@ namespace VapeApplication
 
                 addProductPanel = new AddProductPanel();
                 this.Controls.Add(addProductPanel);
+
+        
+        private void showListProducts()
+        {
+            listProducts = new ListProducts();
+            listProducts.Location =
+            new Point(0,
+                    30);
+
+            this.Controls.Add(listProducts);
+        }
+
         }
     }
 }

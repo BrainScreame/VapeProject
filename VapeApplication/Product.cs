@@ -67,6 +67,7 @@ namespace VapeApplication
 
         public String Description
         {
+
             get { return description; }
             set { description = value; }
         }
