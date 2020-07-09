@@ -35,7 +35,7 @@ namespace VapeApplication
 
         public decimal ComputeTotalValue()
         {
-            return lineCollection.Sum(e => (decimal)e.Product.Price * e.Quantity);
+            return lineCollection.Sum(e => (decimal)(e.Product.Price - e.Product.Price * e.Product.Discount * 0.01) * e.Quantity);
         }
 
         public void Clear()

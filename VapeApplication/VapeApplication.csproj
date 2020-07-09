@@ -133,6 +133,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListCart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListCart.Designer.cs">
+      <DependentUpon>ListCart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Seller.cs" />
     <EmbeddedResource Include="AddProductPanel.resx">
       <DependentUpon>AddProductPanel.cs</DependentUpon>
@@ -155,6 +161,9 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListCart.resx">
+      <DependentUpon>ListCart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListItem.resx">
       <DependentUpon>ListItem.cs</DependentUpon>
