@@ -8,7 +8,21 @@ namespace VapeApplication
 {
     public class Cart
     {
-        private List<CartLine> lineCollection = new List<CartLine>();
+        private static Cart cart;
+        private List<CartLine> lineCollection;
+
+        private Cart() {
+            lineCollection = new List<CartLine>();
+        }
+
+        public static Cart getCart()
+        {
+            if (cart == null)
+            {
+                cart = new Cart();
+            }
+            return cart;
+        }
 
         public IEnumerable<CartLine> Lines { get { return lineCollection; } }
 
@@ -32,6 +46,7 @@ namespace VapeApplication
         {
             lineCollection.RemoveAll(l => l.Product.Id == product.Id);
         }
+
 
         public decimal ComputeTotalValue()
         {
