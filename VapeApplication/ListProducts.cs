@@ -25,7 +25,6 @@ namespace VapeApplication
             Dock = DockStyle.Fill;
             dBVape = DBVape.getDBVape();
             createCategotyBox();
-     
         }
 
         private void populateItems()

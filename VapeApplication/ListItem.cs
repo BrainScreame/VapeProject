@@ -12,6 +12,7 @@ namespace VapeApplication
 {
     public partial class ListItem : UserControl
     {
+
         public ListItem()
         {
             InitializeComponent();
@@ -38,7 +39,7 @@ namespace VapeApplication
                     labelPrice.Text = "ЦЕНА " + product.Price;
                     labelPrice.Font = new Font(labelPrice.Font, FontStyle.Strikeout);
 
-                    labelNewPrice.Text = "Новая цена " + (product.Price - product.Price * product.Discount * 0.01).ToString();
+                    labelNewPrice.Text = "Новая цена " + Math.Round(product.Price - product.Price * product.Discount * 0.01, 2).ToString();
 
                 }
                 labelQantity.Text = "В наличии " + product.Quantity.ToString();
@@ -101,7 +102,7 @@ namespace VapeApplication
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-
+            AddProductPanel addProductPanel = new AddProductPanel(product, null);
         }
 
         private void buttonAddBasket_Click(object sender, EventArgs e)
