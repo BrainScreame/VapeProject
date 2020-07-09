@@ -16,7 +16,7 @@ namespace VapeApplication
         ListProducts listProducts;
         DBVape dbVape;
         AddProductPanel addProductPanel;
-
+        ListCart listCart;
 
         public Form1()
         {
@@ -61,7 +61,9 @@ namespace VapeApplication
 
         private void корзинаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            listCart = new ListCart(panel1);
+            panel1.Controls.Clear();
+            panel1.Controls.Add(listCart);
         }
     }
 }

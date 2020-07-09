@@ -14,14 +14,41 @@ namespace VapeApplication
     {
         Panel control;
         Action method;
-        public ListItem(Panel control, Action method)
+
+        Cart cart;
+
+        public ListItem(Panel control, Action method, int type)
         {
             this.control = control;
             this.method = method;
             //textBoxDescription.ReadOnly = true;
             InitializeComponent();
+
+            if(type == 1)
+            {
+                buttonEdit.Text = "Удалить";
+                buttonAddBasket.Text = "Добавить";
+                labelCart.Visible = true;
+                buttonEdit.Click -= buttonEdit_Click;
+                buttonEdit.Click += new EventHandler(deleteClick);
+                buttonAddBasket.Click -= buttonAddBasket_Click;
+                buttonAddBasket.Click += new EventHandler(addCartClick);
+            }
         }
 
+
+        void deleteClick(object sender, EventArgs e)
+        {
+            cart = Cart.getCart();
+            cart.RemoveLine(product);
+            method();
+        }
+
+        void addCartClick(object sender, EventArgs e)
+        {
+            buttonAddBasket_Click(sender, e);
+            method();
+        }
 
         private Product product;
 
@@ -51,6 +78,13 @@ namespace VapeApplication
             }
         }
 
+        private int countCart;
+
+        public int CountCart
+        {
+            get { return countCart; }
+            set { countCart = value; labelCart.Text = "В корзине " + value.ToString(); }
+        }
         /*
         #region Propperties
 
@@ -113,7 +147,7 @@ namespace VapeApplication
 
         private void buttonAddBasket_Click(object sender, EventArgs e)
         {
-            Cart cart = Cart.getCart();
+            cart = Cart.getCart();
             cart.AddItem(product, Convert.ToInt32(textBoxCount.Text.ToString()));
         }
     }

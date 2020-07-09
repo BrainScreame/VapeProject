@@ -42,7 +42,7 @@ namespace VapeApplication
 
             for (int i = 0; i < products.Count; i++)
             {
-                listItems.Add(new ListItem(panel, showListProductAndUpdateList));
+                listItems.Add(new ListItem(panel, showListProductAndUpdateList, 0));
                 listItems[i].Product = products[i];
                 flowLayoutPanel1.Controls.Add(listItems[i]);
             }

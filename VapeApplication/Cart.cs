@@ -26,7 +26,7 @@ namespace VapeApplication
             return cart;
         }
 
-        public IEnumerable<CartLine> Lines { get { return lineCollection; } }
+        public List<CartLine> Lines { get { return lineCollection; } }
 
         public void AddItem(Product product, int quantity)
         {

@@ -38,6 +38,7 @@
             this.textBoxCount = new System.Windows.Forms.TextBox();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.labelNewPrice = new System.Windows.Forms.Label();
+            this.labelCart = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,11 +141,23 @@
             this.labelNewPrice.TabIndex = 9;
             this.labelNewPrice.Text = "Новая цена";
             // 
+            // labelCart
+            // 
+            this.labelCart.AutoSize = true;
+            this.labelCart.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelCart.Location = new System.Drawing.Point(771, 157);
+            this.labelCart.Name = "labelCart";
+            this.labelCart.Size = new System.Drawing.Size(84, 19);
+            this.labelCart.TabIndex = 10;
+            this.labelCart.Text = "В корзине:";
+            this.labelCart.Visible = false;
+            // 
             // ListItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Controls.Add(this.labelCart);
             this.Controls.Add(this.labelNewPrice);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.textBoxCount);
@@ -174,5 +187,6 @@
         private System.Windows.Forms.TextBox textBoxCount;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Label labelNewPrice;
+        private System.Windows.Forms.Label labelCart;
     }
 }
