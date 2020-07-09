@@ -102,6 +102,7 @@
             this.buttonAddBasket.TabIndex = 6;
             this.buttonAddBasket.Text = "В корзину";
             this.buttonAddBasket.UseVisualStyleBackColor = true;
+            this.buttonAddBasket.Click += new System.EventHandler(this.buttonAddBasket_Click);
             // 
             // textBoxCount
             // 

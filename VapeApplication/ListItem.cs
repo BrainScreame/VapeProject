@@ -103,5 +103,10 @@ namespace VapeApplication
         {
 
         }
+
+        private void buttonAddBasket_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
