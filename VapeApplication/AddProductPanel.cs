@@ -83,9 +83,9 @@ namespace VapeApplication
             // Получаем список категорий и указываем CategoryBox на источник данных
             CategoryBox.DataSource = dbVape.getCategoryList();
             // указываем что выводить в CategoryBox нужно название категории (name)
-            CategoryBox.DisplayMember = "name";
+            CategoryBox.DisplayMember = "Name";
             // указываем что принимать за значение в CategoryBox нужно поле id
-            CategoryBox.ValueMember = "id";
+            CategoryBox.ValueMember = "Id";
             // по дефолту выбираем первый элемент
             CategoryBox.SelectedIndex = 0;
         }

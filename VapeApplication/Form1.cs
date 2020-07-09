@@ -40,10 +40,10 @@ namespace VapeApplication
                 Seller sel = Seller.getSeller();
 
                 //Для проверки удаления, следи за id. Если будет не корректный то ничего не удалится
-                Product product = new Product(7, "name", 2, 100, 100f, 0.5f, "desc", null);
-                addProductPanel = new AddProductPanel(product, new Action(() => { MessageBox.Show("Работает"); }));
+                //Product product = new Product(7, "name", 2, 100, 100f, 0.5f, "desc", null);
+                //addProductPanel = new AddProductPanel(product, new Action(() => { MessageBox.Show("Работает"); }));
 
-                //addProductPanel = new AddProductPanel();
+                addProductPanel = new AddProductPanel();
                 this.Controls.Add(addProductPanel);
         }
     }
