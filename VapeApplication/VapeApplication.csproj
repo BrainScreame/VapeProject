@@ -112,6 +112,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddProductPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AddProductPanel.designer.cs">
+      <DependentUpon>AddProductPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="AutorizPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -126,6 +132,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Seller.cs" />
+    <EmbeddedResource Include="AddProductPanel.resx">
+      <DependentUpon>AddProductPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="ListItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
