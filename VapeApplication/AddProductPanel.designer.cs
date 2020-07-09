@@ -47,6 +47,7 @@
             this.addQuantityTB = new System.Windows.Forms.TextBox();
             this.labelPlus = new System.Windows.Forms.Label();
             this.deleteBtn = new System.Windows.Forms.Button();
+            this.BackBnt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -174,9 +175,9 @@
             // 
             // buttonAddProduct
             // 
-            this.buttonAddProduct.Location = new System.Drawing.Point(22, 734);
+            this.buttonAddProduct.Location = new System.Drawing.Point(18, 734);
             this.buttonAddProduct.Name = "buttonAddProduct";
-            this.buttonAddProduct.Size = new System.Drawing.Size(163, 53);
+            this.buttonAddProduct.Size = new System.Drawing.Size(138, 53);
             this.buttonAddProduct.TabIndex = 19;
             this.buttonAddProduct.Text = "Добавить";
             this.buttonAddProduct.UseVisualStyleBackColor = true;
@@ -247,13 +248,23 @@
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(221, 734);
+            this.deleteBtn.Location = new System.Drawing.Point(172, 734);
             this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(195, 53);
+            this.deleteBtn.Size = new System.Drawing.Size(140, 53);
             this.deleteBtn.TabIndex = 23;
             this.deleteBtn.Text = "Удалить";
             this.deleteBtn.UseVisualStyleBackColor = true;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
+            // BackBnt
+            // 
+            this.BackBnt.Location = new System.Drawing.Point(318, 734);
+            this.BackBnt.Name = "BackBnt";
+            this.BackBnt.Size = new System.Drawing.Size(150, 53);
+            this.BackBnt.TabIndex = 24;
+            this.BackBnt.Text = "Назад";
+            this.BackBnt.UseVisualStyleBackColor = true;
+            this.BackBnt.Click += new System.EventHandler(this.BackBnt_Click);
             // 
             // AddProductPanel
             // 
@@ -263,6 +274,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.BackBnt);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.labelPlus);
             this.Controls.Add(this.addQuantityTB);
@@ -314,5 +326,6 @@
         private System.Windows.Forms.TextBox addQuantityTB;
         private System.Windows.Forms.Label labelPlus;
         private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Button BackBnt;
     }
 }

@@ -16,6 +16,7 @@ namespace VapeApplication
         private TextBox login;
         private TextBox password;
         private Button btnAutorization;
+        private Action method;
 
         public String Login
         {
@@ -29,9 +30,12 @@ namespace VapeApplication
             { return password.Text; }
         }
 
-        public AutorizPanel(EventHandler eventHandler)
+        public AutorizPanel(Action method)
         {
             InitializeComponent();
+
+            this.method = method;
+
             BorderStyle = BorderStyle.Fixed3D;
             FlowDirection = FlowDirection.TopDown;
             AutoSize = true;
@@ -62,7 +66,7 @@ namespace VapeApplication
             };
             btnAutorization.Font = new Font(btnAutorization.Font.Name, 14, btnAutorization.Font.Style);
             btnAutorization.Anchor = AnchorStyles.None;
-            btnAutorization.Click += eventHandler;
+            btnAutorization.Click += btnAutoriz_click;
             btnAutorization.Padding = new Padding(15, 10, 15, 10);
             btnAutorization.AutoSize = true;
 
@@ -71,6 +75,24 @@ namespace VapeApplication
             this.Controls.Add(login);
             this.Controls.Add(password);
             this.Controls.Add(btnAutorization);
+        }
+
+        private void btnAutoriz_click(object sender, EventArgs e)
+        {
+            DBVape dbVape = DBVape.getDBVape();
+            if (dbVape == null)
+            {
+                MessageBox.Show("Ошибка работы с БД");
+                return;
+            }
+
+            dbVape.getSaller(Login, Password);
+            if (Seller.getSeller() != null)
+            {
+                method();
+            }
+            else
+                MessageBox.Show("Пользователь не найден");
         }
     }
 }

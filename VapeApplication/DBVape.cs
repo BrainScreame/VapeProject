@@ -29,10 +29,9 @@ namespace VapeApplication
         }
 
         // ищем продавца по логину и паролю
-        public int getSaller(string login, string password)
+        public void getSaller(string login, string password)
         {
-            int number = 0;
-            String expression = "SELECT id FROM sellers WHERE @login = LOGIN and sha1(@password) = PASSWORD";
+            String expression = "SELECT * FROM sellers WHERE @login = LOGIN and sha1(@password) = PASSWORD";
             try
             {
                 openConnection();
@@ -46,7 +45,14 @@ namespace VapeApplication
                 // добавляем параметр к команде
                 command.Parameters.Add(passwordParam);
 
-                number = Convert.ToInt32(command.ExecuteScalar());
+                MySqlDataReader reader = command.ExecuteReader();
+                
+                if (reader.HasRows) // если есть данные
+                {
+                    reader.Read();
+                    Seller.CreateSeller(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)
+                        , reader.GetString(3), login, password);
+                }
             }
             catch (MySqlException e) { MessageBox.Show(e.Message); }
             finally
@@ -54,7 +60,7 @@ namespace VapeApplication
                 // закрываем подключение
                 closeConnection();
             }
-            return number;
+           
         }
 
         // получаем список категорий товаров

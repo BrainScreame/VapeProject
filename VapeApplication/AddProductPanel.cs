@@ -17,6 +17,7 @@ namespace VapeApplication
     {
         DBVape dbVape;
         Product product = null;
+        Action disposeClick = null;
 
         public AddProductPanel()
         {
@@ -24,9 +25,13 @@ namespace VapeApplication
             dbVape = DBVape.getDBVape();
             
             createCategotyBox();
+            create_correct_entry();
+
             deleteBtn.Visible = false;
             labelPlus.Visible = false;
             addQuantityTB.Visible = false;
+            BackBnt.Visible = false;
+
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox.InitialImage = new Bitmap(new FileStream(@"..\..\..\image\load_image.gif",
                                             FileMode.Open, FileAccess.Read));
@@ -35,16 +40,23 @@ namespace VapeApplication
             
         }
 
-        public AddProductPanel(Product product)
+        // backPanel это панель которая будет отображаться при нажатии кнопки удалить или назад
+        public AddProductPanel(Product product, Action disposeClick)
         {
             InitializeComponent();
             dbVape = DBVape.getDBVape();
+
             createCategotyBox();
+            create_correct_entry();
 
             this.product = product;
+
             buttonAddProduct.Text = "Обновить";
             buttonAddProduct.Click += new EventHandler(updateProductHandler);
             buttonAddProduct.Click -= buttonAddProduct_Click;
+
+            this.disposeClick = disposeClick;
+
             showProduct();
         }
 
@@ -68,9 +80,13 @@ namespace VapeApplication
         // категории из бд берем
         private void createCategotyBox()
         {
+            // Получаем список категорий и указываем CategoryBox на источник данных
             CategoryBox.DataSource = dbVape.getCategoryList();
+            // указываем что выводить в CategoryBox нужно название категории (name)
             CategoryBox.DisplayMember = "name";
+            // указываем что принимать за значение в CategoryBox нужно поле id
             CategoryBox.ValueMember = "id";
+            // по дефолту выбираем первый элемент
             CategoryBox.SelectedIndex = 0;
         }
 
@@ -115,8 +131,6 @@ namespace VapeApplication
              else
                  MessageBox.Show("ERROR!!!");
              clearInput();
-            //int id = (int)CategoryBox.SelectedValue;
-            //MessageBox.Show(id.ToString());
         }
 
         private void updateProductHandler(object sender, EventArgs e)
@@ -167,40 +181,27 @@ namespace VapeApplication
                 return false;
             }
                
-
-            try
+            priceTB.Text = priceTB.Text.Replace(",", ".");
+            float price = float.Parse(this.priceTB.Text.Replace(",", "."), CultureInfo.InvariantCulture.NumberFormat);
+            if (price == 0)
             {
-                priceTB.Text = priceTB.Text.Replace(",", ".");
-                float price = float.Parse(this.priceTB.Text.Replace(",", "."), CultureInfo.InvariantCulture.NumberFormat);
-                if (price < 0)
-                {
-                    MessageBox.Show("В строке стоимости введено не коректное значение");
-                    return false;
-                }
+                MessageBox.Show("В строке стоимости введено не коректное значение");
+                return false;
             }
-            catch { MessageBox.Show("В строке стоимости введено не коректное значение"); return false; }
 
-            try
+            float discount = int.Parse(this.discountTB.Text);
+            if (discount < 0 || discount > 100)
             {
-                float discount = int.Parse(this.discountTB.Text);
-                if (discount < 0 || discount > 100)
-                {
-                    MessageBox.Show("В строке скидка введено не коректное значение");
-                    return false;
-                }
+                MessageBox.Show("В строке скидка введено не коректное значение");
+                return false;
             }
-            catch { MessageBox.Show("В строке скидка введено не коректное значение"); return false; }
 
-            try
+            int quantity = int.Parse(this.quantityTB.Text);
+            if (quantity < 0)
             {
-                int quantity = int.Parse(this.quantityTB.Text);
-                if (quantity < 0)
-                {
-                    MessageBox.Show("В строке количество введено не коректное значение");
-                    return false;
-                }
+                MessageBox.Show("В строке количество введено не коректное значение");
+                return false;
             }
-            catch { MessageBox.Show("В строке количество введено не коректное значение"); return false; }
 
             if(addQuantityTB.Visible == true && addQuantityTB.TextLength > 0)
             {
@@ -219,11 +220,58 @@ namespace VapeApplication
             if (dbVape.deleteProduct(product))
             {
                 MessageBox.Show("Удалено");
-                // TODO: Переход на какую то другую панель, так как продукт удален
-                this.Dispose();
+                //Переход на какую то другую панель, так как продукт удален
+                this.Parent.Controls.Remove(this);
+                disposeClick?.Invoke();
+                this.Dispose(true);
             }
             else
                 MessageBox.Show("ERROR!!!");
         }
+
+        private void BackBnt_Click(object sender, EventArgs e)
+        {
+            this.Parent.Controls.Remove(this);
+            disposeClick?.Invoke();
+            this.Dispose(true);
+        }
+
+        private void create_correct_entry()
+        {
+            quantityTB.KeyPress += new KeyPressEventHandler(enter_only_integers);
+            addQuantityTB.KeyPress += new KeyPressEventHandler(enter_only_integers_with_minus);
+            discountTB.KeyPress += new KeyPressEventHandler(enter_only_integers);
+            priceTB.KeyPress += new KeyPressEventHandler(enter_only_floats);
+        }
+
+        private void enter_only_floats(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            // цифры, клавиша BackSpace, запятая и точка
+            if (!Char.IsDigit(number) && number != 8 && number != 44 && number != 46) 
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void enter_only_integers_with_minus(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8 && number != 45) // цифры, клавиша BackSpace и минус 
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void enter_only_integers(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
+            {
+                e.Handled = true;
+            }
+        }
+
+
     }
 }
