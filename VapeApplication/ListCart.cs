@@ -33,7 +33,7 @@ namespace VapeApplication
                 listItems[i].CountCart = cart.Lines[i].Quantity;
                 flowLayoutPanel1.Controls.Add(listItems[i]);
             }
-            labelSum.Text = "Общая стоимось " + Math.Round(cart.ComputeTotalValue(), 2).ToString();
+            labelSum.Text = "Общая стоимость " + Math.Round(cart.ComputeTotalValue(), 2).ToString();
         }
 
         private void showListProductAndUpdateList()
@@ -51,7 +51,7 @@ namespace VapeApplication
         private void clearAll()
         {
             cart.Lines.Clear();
-            labelSum.Text = "Общая стоимось 0";
+            labelSum.Text = "Общая стоимость 0";
             flowLayoutPanel1.Controls.Clear();
         }
 

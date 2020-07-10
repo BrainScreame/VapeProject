@@ -44,9 +44,9 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox.Location = new System.Drawing.Point(6, 4);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(220, 216);
+            this.pictureBox.Size = new System.Drawing.Size(226, 239);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
@@ -63,7 +63,8 @@
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBoxDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxDescription.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBoxDescription.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -73,15 +74,16 @@
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.ReadOnly = true;
             this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxDescription.Size = new System.Drawing.Size(700, 115);
+            this.textBoxDescription.Size = new System.Drawing.Size(970, 139);
             this.textBoxDescription.TabIndex = 3;
             this.textBoxDescription.Text = resources.GetString("textBoxDescription.Text");
             // 
             // labelPrice
             // 
+            this.labelPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelPrice.AutoSize = true;
             this.labelPrice.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelPrice.Location = new System.Drawing.Point(250, 190);
+            this.labelPrice.Location = new System.Drawing.Point(250, 217);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(58, 19);
             this.labelPrice.TabIndex = 4;
@@ -89,9 +91,10 @@
             // 
             // labelQantity
             // 
+            this.labelQantity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelQantity.AutoSize = true;
             this.labelQantity.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelQantity.Location = new System.Drawing.Point(250, 157);
+            this.labelQantity.Location = new System.Drawing.Point(250, 184);
             this.labelQantity.Name = "labelQantity";
             this.labelQantity.Size = new System.Drawing.Size(85, 19);
             this.labelQantity.TabIndex = 5;
@@ -99,10 +102,11 @@
             // 
             // buttonAddBasket
             // 
+            this.buttonAddBasket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddBasket.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonAddBasket.Location = new System.Drawing.Point(820, 184);
+            this.buttonAddBasket.Location = new System.Drawing.Point(1090, 211);
             this.buttonAddBasket.Name = "buttonAddBasket";
-            this.buttonAddBasket.Size = new System.Drawing.Size(125, 30);
+            this.buttonAddBasket.Size = new System.Drawing.Size(125, 32);
             this.buttonAddBasket.TabIndex = 6;
             this.buttonAddBasket.Text = "В корзину";
             this.buttonAddBasket.UseVisualStyleBackColor = true;
@@ -110,7 +114,8 @@
             // 
             // textBoxCount
             // 
-            this.textBoxCount.Location = new System.Drawing.Point(775, 189);
+            this.textBoxCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxCount.Location = new System.Drawing.Point(1045, 216);
             this.textBoxCount.Multiline = true;
             this.textBoxCount.Name = "textBoxCount";
             this.textBoxCount.Size = new System.Drawing.Size(39, 22);
@@ -121,9 +126,10 @@
             // 
             // buttonEdit
             // 
+            this.buttonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.buttonEdit.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonEdit.Location = new System.Drawing.Point(775, 3);
+            this.buttonEdit.Location = new System.Drawing.Point(1045, 3);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(179, 37);
             this.buttonEdit.TabIndex = 8;
@@ -133,9 +139,10 @@
             // 
             // labelNewPrice
             // 
+            this.labelNewPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelNewPrice.AutoSize = true;
             this.labelNewPrice.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelNewPrice.Location = new System.Drawing.Point(425, 190);
+            this.labelNewPrice.Location = new System.Drawing.Point(425, 217);
             this.labelNewPrice.Name = "labelNewPrice";
             this.labelNewPrice.Size = new System.Drawing.Size(88, 19);
             this.labelNewPrice.TabIndex = 9;
@@ -143,9 +150,10 @@
             // 
             // labelCart
             // 
+            this.labelCart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelCart.AutoSize = true;
             this.labelCart.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelCart.Location = new System.Drawing.Point(771, 157);
+            this.labelCart.Location = new System.Drawing.Point(1034, 184);
             this.labelCart.Name = "labelCart";
             this.labelCart.Size = new System.Drawing.Size(84, 19);
             this.labelCart.TabIndex = 10;
@@ -156,6 +164,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.Controls.Add(this.labelCart);
             this.Controls.Add(this.labelNewPrice);
@@ -168,8 +178,10 @@
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.pictureBox);
             this.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
+            this.MaximumSize = new System.Drawing.Size(2000, 300);
+            this.MinimumSize = new System.Drawing.Size(800, 250);
             this.Name = "ListItem";
-            this.Size = new System.Drawing.Size(957, 223);
+            this.Size = new System.Drawing.Size(1227, 250);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

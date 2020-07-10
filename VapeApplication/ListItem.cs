@@ -23,6 +23,7 @@ namespace VapeApplication
             this.method = method;
             //textBoxDescription.ReadOnly = true;
             InitializeComponent();
+            Anchor = AnchorStyles.Left | AnchorStyles.Right;
 
             if(type == 1)
             {
@@ -150,5 +151,6 @@ namespace VapeApplication
             cart = Cart.getCart();
             cart.AddItem(product, Convert.ToInt32(textBoxCount.Text.ToString()));
         }
+
     }
 }
